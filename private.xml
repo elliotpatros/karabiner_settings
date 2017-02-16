@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<root>
+    
+    <!-- swap backslash and delete -->
+    <item>
+        <name>swap backslash(\) and delete</name>
+        <identifier>private.backslash_to_delete</identifier>
+        <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::DELETE, KeyCode::BACKSLASH</autogen>
+    </item>
+    
+    <!-- right control to fn -->
+    <item>
+        <name>right control to fn</name>
+        <identifier>private.right_control_to_fn</identifier>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::FN</autogen>
+    </item>
+    
+    <!-- fn+escape to power -->
+    <item>
+        <name>fn+escape to power</name>
+        <identifier>private.fn_and_escape_to_power</identifier>
+        <autogen>
+            __KeyToKey__
+            KeyCode::ESCAPE, ModifierFlag::FN,
+            KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY
+        </autogen>
+    </item>
+    
+    <!-- fn1 and fn2 to brightness -->
+    <item>
+        <name>fn1 and fn2 to brightness</name>
+        <identifier>private.fn_1_and_2_to_brightness</identifier>
+        <autogen>
+            __KeyToKey__
+            KeyCode::F1, ModifierFlag::FN | ModifierFlag::NONE,
+            ConsumerKeyCode::BRIGHTNESS_DOWN
+        </autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::F2, ModifierFlag::FN | ModifierFlag::NONE,
+            ConsumerKeyCode::BRIGHTNESS_UP
+        </autogen>
+    </item>
+    
+    <!-- fn13 - fn15 to volume -->
+    <item>
+        <name>fn13 - fn15 to volume</name>
+        <identifier>private.fn13_thru_fn15_to_volume</identifier>
+        <autogen>__KeyToKey__ KeyCode::F13, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::F14, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::F15, ConsumerKeyCode::VOLUME_UP</autogen>
+    </item>
+    
+    <!-- simulate hhkb arrow keys -->
+    <item>
+        <name>simulate hhkb arrow keys</name>
+        <identifier>private.sim_hhkb_arrow_keys</identifier>
+        <autogen>__KeyToKey__ KeyCode::QUOTE, ModifierFlag::SHIFT_R, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_R, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::SHIFT_R, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::SHIFT_R, KeyCode::CURSOR_LEFT</autogen>
+    </item>
+
+    <!-- hold space to fn -->
+    <item>
+        <name>Holding Space to Fn</name>
+        <appendix>Holding space is the same as holding the fn key</appendix>
+        <identifier>remap.holding_space_to_fn</identifier>
+        <autogen>
+            __HoldingKeyToKey__
+            KeyCode::SPACE,
+            
+            <!-- short press -->
+            @begin
+            KeyCode::SPACE,
+            @end
+            
+            <!-- hold -->
+            @begin
+            KeyCode::FN,
+            Option::NOREPEAT,
+            @end
+        </autogen>
+    </item>
+</root>
+
+
+<!--
+ for the repo, checkout: 
+ https://github.com/tekezo/Karabiner/tree/version_10.22.0/src/core/server/Resources/include/checkbox
+ 
+ for private.xml references, checkout: 
+ https://pqrs.org/osx/karabiner/xml.html.en
+ 
+ for keycode data, checkout: 
+ https://github.com/tekezo/Karabiner/blob/version_10.22.0/src/bridge/generator/keycode/data/KeyCode.data
+ -->
